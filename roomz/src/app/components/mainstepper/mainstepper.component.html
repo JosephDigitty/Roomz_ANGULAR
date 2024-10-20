@@ -1,0 +1,118 @@
+
+<section class="flex justify-between  bg-gray-100">
+  <!-- Sidebar Stepper Tracker -->
+  <div class="w-1/4 h-full px-10 bg-gray-100">
+    <div class="w-[455px] min-h-[24px] flex justify-between left-[50px]">
+      <div class="gap-[8px] min-w-[197px] flex items-center py-3 min-h-[24px]">
+        <ng-icon name="ionArrowBack" class="w-[24px] h-[24px] text-[16px] font-normal leading-[21.79px] font-sans cursor-pointer text-[#161616]"></ng-icon>
+        <p class="w-[165px] h-[22px] text-[16px] font-normal leading-[21.79px] font-sans text-[#161616]">
+          Create a seeker listing
+        </p>
+      </div>
+    </div>
+    <div class="w-[457px] min-h-[500px] gap-[15px]">
+      <ul>
+        <li *ngFor="let step of steps; let i = index" class="mb-4 cursor-pointer">
+          <div 
+            (click)="goToStep(i)"
+            [ngClass]="{
+              'bg-[#ffeee5]' : isCurrentStep(i),
+              'bg-gray-200' : isStepComplete(i),
+              'bg-gray-400': !isStepComplete(i)  && !isCurrentStep(i)
+            }"
+            class="min-w-[547px] h-full flex gap-3 items-center rounded-[12px] p-2">
+            <div [ngClass]="{
+              'bg-primary/40' : isStepComplete(i),
+              'bg-white/80' : isCurrentStep(i),
+              'bg-white/90' : !isStepComplete(i)  && !isCurrentStep(i),
+            }"
+            class="w-[28px] h-[28px] gap-[10px] rounded-full"
+            >
+              <ng-icon name="heroCheckSolid" class="w-[18px] h-[18px] p-1 "
+              [ngClass]="{
+                'text-white' : isStepComplete(i),
+                'font-bold' : isStepComplete(i),
+              }"
+              ></ng-icon>
+            </div>
+            <span
+            [ngClass]="{
+              'text-primary' : isStepComplete(i),
+              'text-[#121212]': !isStepComplete(i)
+            }"
+            class="text-[18px] font-normal py-1 leading-[21.79px] font-sans"
+            >{{ step.label }}</span>
+            <span *ngIf="isStepComplete(i)" class="ml-2 text-primary">&#10003;</span> <!-- Checkmark if completed -->
+          </div>
+        </li>
+      </ul>
+    </div>
+    
+  </div>
+
+  <!-- Step Content -->
+  <section>
+    <div class="w-3/4 px-10 py-5">
+      <ng-container *ngIf="currentStep === 0">
+        <app-space (stepComplete)="completeStep()"></app-space>
+      </ng-container>
+      <ng-container *ngIf="currentStep === 1">
+        <app-location (stepComplete)="completeStep()"></app-location>
+      </ng-container>
+      <ng-container *ngIf="currentStep === 2">
+        <app-budget (stepComplete)="completeStep()"></app-budget>
+      </ng-container>
+      <ng-container *ngIf="currentStep === 3">
+        <app-living (stepComplete)="completeStep()"></app-living>
+      </ng-container>
+      <ng-container *ngIf="currentStep === 4">
+        <app-introduction (stepComplete)="completeStep()"></app-introduction>
+      </ng-container>
+      <ng-container *ngIf="currentStep === 5">
+        <app-details (stepComplete)="completeStep()"></app-details>
+      </ng-container>
+      <ng-container *ngIf="currentStep === 6">
+        <app-lifestyles (stepComplete)="completeStep()"></app-lifestyles>
+      </ng-container>
+      <ng-container *ngIf="currentStep === 7">
+        <app-great (stepComplete)="completeStep()"></app-great>
+      </ng-container>
+      <!-- Add more ng-containers for other components -->
+    </div>
+    <!-- Navigation Buttons -->
+    <div class="flex justify-center space-x-4"
+    [ngClass]="{
+      'hidden' : isFinalStep(),
+    }"
+    >
+      <button
+      class="w-[308px] h-[44px] bg-transparent gap-[10px] border border-[#1C9EA5] py-[13px] px-[130px] rounded-[20px] text-[#1C9EA5]"
+      [ngClass]="{
+        'hidden' : currentStep === 0,
+      }"
+      (click)="goToPreviousStep()">Previous</button>
+
+      <button
+      class=" w-[308px] h-[44px] bg-[#1C9EA5] gap-[10px] py-[13px] px-[130px] rounded-[20px] text-white "
+      [disabled]="currentStep >= steps.length - 1"
+      (click)="goToNextStep()">Next</button>
+      </div>  
+
+      <div class="flex flex-row-reverse gap-3 justify-center space-x-4"
+    [ngClass]="{
+      'hidden' : !isFinalStep(),
+    }"
+    >
+      <a
+      class="w-[308px] h-[44px] bg-[#1C9EA5] gap-[10px] py-[13px] px-[130px] rounded-[20px] text-white"
+      href=""
+      >Preview</a>
+      <button
+      class="w-[308px] h-[44px] bg-transparent gap-[10px] border border-[#1C9EA5] py-[13px] px-[130px] rounded-[20px] text-[#1C9EA5]"
+      (click)="goToPreviousStep()">Previous</button>
+      
+      </div>
+  
+</section>
+
+

@@ -1,0 +1,168 @@
+<div class="px-9 py-8 bg-[#fcfafa]">
+ <div class="min-w-[1341px] max-h-[2500px] grid grid-cols-3 top-[1058px] gap-[60px]">
+   <div *ngFor="let item of paginatedItems"class="min-w-[427px] min-h-[539px] pb-[30px] gap-[24px] bg-white ">
+        <div class="w-[427px] h-[345px]">
+            <img [src]=item.image alt="property image" class="rounded-[30px]  w-full h-full " >
+        </div>
+        <div class="gap-[10px] min-w-[387px] px-3 py-5 h-[144px]">
+            <div class="gap-[10px] h-[91px] min-w-[387px]">
+                <div *ngIf="item.source === 'Cards'" class="flex gap-[10px] h-[22px] w-[387px]">
+                    <img src="assets/icons/location.jpg" alt="" class="w-5 h-5">
+                    <p class="font-sans font-normal text-[16px] leading-[21.79px] text-[#616161]">
+                        {{item.propertyLocation}}
+                    </p>
+                </div>
+                <div *ngIf="item.source === 'userListings'" class="flex gap-[10px] h-[22px] w-[387px]">
+                    <p class="font-sans font-normal text-[16px] leading-[21.79px] text-[#616161]">
+                        {{item.userDescription.slice(0,32)+"...." }}
+                    </p>
+                </div>
+                <div class="flex justify-between pt-[6px] w-[387px] h-[22px]">
+                    <div class="h-[22px] w-[164px] flex gap-[20px]">
+                        <div class="flex items-center gap-[15px]">
+                            <div class="">
+                                <img src="assets/icons/Bed.png" alt="" class="w-5 h-5">
+                            </div>
+                            <p class="font-sans font-normal text-[16px] leading-[21.79px] text-[#616161]">
+                                {{item.propertyBedrooms}} 
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-[15px]">
+                            <div class="">
+                                <img src="assets/icons/Vector.png" alt="" class="w-5 h-5">
+                            </div>
+                            <p class="font-sans font-normal text-[16px] leading-[21.79px] text-[#616161]">
+                                {{item.propertyBathrooms}}
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-[15px]">
+                            <div class="">
+                                <img src="assets/icons/user-octagon.png" alt="" class="w-5 h-5">
+                            </div>
+                            <p class="font-sans font-normal text-[16px] leading-[21.79px] text-[#616161]">
+                                {{item.propertySize}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-1 h-1 rounded-full bg-[#fb5801]"></div>
+                        <p class="font-sans font-normal text-[16px] leading-[21.79px] text-[#616161]">
+                            Available now
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <p *ngIf="item.source === 'Cards'" class="font-sans font-normal text-[16px] leading-[21.79px] text-[#616161]">
+                    {{item.propertyQty}}
+                </p>
+                <p *ngIf="item.source === 'userListings'" class="font-sans font-normal text-[16px] leading-[21.79px] text-[#616161]">
+                    {{item.propertyPrice}}
+                </p>
+            </div>
+            <div class="gap-[15px] flex justify-between w-[387px] h-[33px] pt-2 border-t border-t-[#e0e0e0]">
+                <h5 *ngIf="item.source === 'Cards'" class="font-sans font-semibold text-[24px] text-[#121212] leading-[32.68px]">
+                    {{item. propertyPrice }}
+                </h5>
+                <h5 *ngIf="item.source === 'userListings'" class="font-sans font-semibold text-[24px] text-[#121212] leading-[32.68px]">
+                    {{item.userName}}
+                </h5>
+                <div class="flex items-center gap-[10px]">
+                    
+                    <img src="assets/icons/message.png" alt="" class="w-6 h-6">
+                    <a href=""class="font-normal text-[16px] text-[#097c76] leading-[21.79px]" >
+                        Message
+                    </a>
+                </div>
+            </div>
+        </div>
+   </div>
+   <!-- <div *ngFor="let listing of userListings"class="min-w-[427px] min-h-[539px] pb-[30px] gap-[24px] bg-white ">
+    <div class="w-[427px] h-[345px]">
+        <img [src]=listing.image alt="property image" class="rounded-[30px]  w-full h-full " >
+    </div>
+    <div class="gap-[10px] min-w-[387px] px-3 py-5 h-[144px]">
+        <div class="gap-[10px] h-[91px] min-w-[387px]">
+            <div class="flex gap-[10px] h-[22px] w-[387px]">
+               
+                <p class="font-sans font-normal text-[16px] leading-[21.79px] text-[#616161]">
+                    {{listing.userDescription.slice(0,35)+"..."}} 
+                </p>
+            </div>
+            <div class="flex justify-between pt-[6px] w-[387px] h-[22px]">
+                <div class="h-[22px] w-[164px] flex gap-[20px]">
+                    <div class="flex items-center gap-[15px]">
+                        <div class="">
+                            <img src="assets/icons/Bed.png" alt="" class="w-5 h-5">
+                        </div>
+                        <p class="font-sans font-normal text-[16px] leading-[21.79px] text-[#616161]">
+                            {{listing.propertyBedrooms}}
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-[15px]">
+                        <div class="">
+                            <img src="assets/icons/Vector.png" alt="" class="w-5 h-5">
+                        </div>
+                        <p class="font-sans font-normal text-[16px] leading-[21.79px] text-[#616161]">
+                            {{listing.propertyBathrooms}}
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-[15px]">
+                        <div class="">
+                            <img src="assets/icons/user-octagon.png" alt="" class="w-5 h-5">
+                        </div>
+                        <p class="font-sans font-normal text-[16px] leading-[21.79px] text-[#616161]">
+                            {{listing.propertySize}}
+                        </p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-1 h-1 rounded-full bg-[#fb5801]"></div>
+                    <p class="font-sans font-normal text-[16px] leading-[21.79px] text-[#616161]">
+                        Available on {{listing.postedDate}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <p class="font-sans font-normal text-[16px] leading-[21.79px] text-[#616161]">
+                {{listing.propertyPrice}}
+            </p>
+        </div>
+        <div class="gap-[15px] flex justify-between w-[387px] h-[33px] pt-2 border-t border-t-[#e0e0e0]">
+            <h5 class="font-sans font-semibold text-[24px] text-[#121212] leading-[32.68px]">
+                {{listing.userName}}
+            </h5>
+            <div class="flex items-center gap-[10px]">
+                
+                <img src="assets/icons/message.png" alt="" class="w-6 h-6">
+                <a href=""class="font-normal text-[16px] text-[#097c76] leading-[21.79px]" >
+                    Message
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+ </div> -->
+ 
+</div>
+<div class="pt-9">
+    <p-paginator 
+        [rows]="itemsPerPage" 
+        [totalRecords]="sortedItems.length" 
+        [rowsPerPageOptions]="[5, 10, 20]" 
+        (onPageChange)="paginate($event)"
+        showCurrentPageReport="true">
+    </p-paginator>
+ </div>
+
+ <div>
+    Home works
+ </div>
+
+
+
+
+
+
+

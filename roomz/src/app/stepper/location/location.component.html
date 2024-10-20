@@ -1,0 +1,28 @@
+<div class="w-[953px] h-[500px] rounded-[20px] bg-white border border-gray-500">
+    <div class="space-y-16  flex flex-col pt-10 justify-center items-center">
+        <div class="w-[381px] h-[33px] flex flex-col items-center  ">
+            <p class="font-sans font-semibold text-[22px] leading-[32.68ps] text-[#121212]">
+                where is your preferred Location?
+            </p>
+            <p class="font-sans text-[14px] leading-[19.07px] font-normal text-[#757575]">
+                We recommend choosing at most 4 suburbs
+            </p>
+        </div>
+    </div>
+
+    <div class="pt-40 flex flex-col justify-center items-center">
+        <div class="left-14">
+            <p class="font-normal text-[14px] leading-[19.07px] font-sans">
+                Surburb
+            </p>
+        </div>
+        <div>
+            <p-chips [(ngModel)]="values" max="4" 
+            placeholder="Search a Surburb"
+            styleClass="border border-gray-300 rounded-2xl w-[450px] px-4"
+            />
+        </div>
+    </div>
+</div>
+
+
