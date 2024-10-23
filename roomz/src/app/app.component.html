@@ -1,2 +1,8 @@
 <app-header/>
 <router-outlet />
+<div 
+[ngClass]="{
+    'hidden': islistspace || isfindlist || isstepper1 || isstepper2
+}">
+    <app-footer/>
+</div>

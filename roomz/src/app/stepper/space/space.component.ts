@@ -28,10 +28,10 @@ export class SpaceComponent {
   @Output() stepComplete = new EventEmitter<void>();
 
     spaceForm = new FormGroup({
-    spaceName: new FormControl('', Validators.required),  // Example required field
+    spaceName: new FormControl('', Validators.required),  
     spaceSize: new FormControl('', Validators.required),})
   markStepComplete() {
-    this.stepComplete.emit();  // Notify parent that the step is completed
+    this.stepComplete.emit();  
   }
 
   
